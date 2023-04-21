@@ -16,7 +16,6 @@ export const Container = styled.div`
     background: rgba(0,0,0,0.1);
     box-shandow: 0px 4px 4px rgbs(0,0,0,0.25);
     border-radius: 10px;
-
     display: flex;
     flex-direction: column;
 `;
