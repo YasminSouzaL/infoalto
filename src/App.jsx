@@ -21,7 +21,7 @@ function App() {
           </Flex>
         <Spacer margin="12px"/>
         <Item>REACT </Item>
-          <Flex >
+          <Flex>
             <i class='bx bx-check-circle' ></i>
             <i class='bx bx-trash' ></i>
           </Flex>
