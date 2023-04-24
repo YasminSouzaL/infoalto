@@ -83,15 +83,15 @@ export const Button = styled.button`
 `;
 
 export const Item = styled.li`
-    padding: 13px 10px 13px 24px;
-    width: 354px;
+    padding: 12px 10px 12px 24px;
+    width: 292px;
     height: 50px;
     background: #74B4EC;
     mix-blend-mode: normal;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     text-decoration-line: line-through;

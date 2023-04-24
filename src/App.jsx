@@ -14,24 +14,23 @@ function App() {
       </Flex>
       <Spacer margin="16px"/>
       <ul>
-        <Item>REACT</Item>
-          <Flex>
-            <i class='bx bx-check-circle' ></i>
-            <i class='bx bx-trash' ></i>
-          </Flex>
-        <Spacer margin="12px"/>
-        <Item>REACT </Item>
-          <Flex>
-            <i class='bx bx-check-circle' ></i>
-            <i class='bx bx-trash' ></i>
-          </Flex>
-        <Spacer margin="12px"/>
-        <Item>REACT</Item>
-          <Flex>
-            <i class='bx bx-check-circle' ></i>
-            <i class='bx bx-trash' ></i>
-          </Flex>
-        <Spacer margin="12px"/>
+        <Flex direction="row">
+          <Item>REACT</Item>
+            <Flex direction="row">
+              <i class='bx bx-check-circle' ></i>
+              <i class='bx bx-trash' ></i>
+            </Flex>
+          <Spacer margin="12px"/>
+        </Flex>
+        <Spacer/>
+        <Flex direction="row">
+          <Item>REACT </Item>
+            <Flex direction="row">
+              <i class='bx bx-check-circle' ></i>
+              <i class='bx bx-trash' ></i>
+            </Flex>
+          <Spacer margin="12px"/>
+        </Flex>
       </ul>
     </Container>
   );
