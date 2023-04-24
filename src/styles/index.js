@@ -70,30 +70,64 @@ export const Flex = styled.div `
 `;
 
 export const Button = styled.button`
-    width: 120px;
-    heigth: 200px;
+    width: 112px;
+    heigth: 50px;
     background: #74B4EC;
-    border-radius: 20px; 
+    border-radius: 10px; 
     border: none;
 
     font-weigth: 500;
     font-size: 16px;
-    line-heigth: 5px;
-    color: #FBFBFB
+    line-heigth: 24px;
+    color: #FBFBFB;
+    cursor: pointer;
+
+    &:houver{
+        opacity: 0.8;
+    }
+    &:active{
+        opacity: 0.6;
+    }
+    
 `;
 
 export const Item = styled.li`
     padding: 12px 10px 12px 24px;
-    width: 292px;
+    width: 299px;
     height: 50px;
-    background: #74B4EC;
+    background: ${(props) => (props.checked ? "#74B4EC" : "#FFFFFF")};
     mix-blend-mode: normal;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    p{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration-line: ${(props) => (props.checked ? "Line-through" : "")};
+        color: ${(props) => (props.checked ? "#ffffff" : "#000000")};
+    }
+    
+    button{
+        background: transparent;
+        border: none;
+        cursor: pointer;
 
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    text-decoration-line: line-through;
-    color: #FFFFFF;
+        &:houver{
+            opacity: 0.8;
+        }
+        &:active{
+            opacity: 0.6;
+        }
+    }
+
+    i{
+        font-size: 28px;
+        color: ${(props) => (props.checked ? "#ffffff" : "#000000")};
+    }
+
 `;
