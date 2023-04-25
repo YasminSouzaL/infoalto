@@ -5,19 +5,7 @@ import imgagemEscolhida from './assets/Capturar.jpg';
 
 function App() {
   const [tarefa,setTarefa] = useState("");
-  const [tarefas,setTarefas] = useState([
-    {
-      id: 1,
-      tarefa: "Estudar React",
-      //status: false,
-      checked: true,
-    },{
-      id: 2,
-      tarefa: "Estudar React",
-      //status: false,
-      checked: false,
-    }
-  ]);
+  const [tarefas,setTarefas] = useState([]);
 
   const addTarefa = () => {
     if(!tarefa) return alert("Digite uma tarefa!");
