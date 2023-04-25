@@ -63,7 +63,7 @@ function App() {
               <button>
                 <i class="bx bx-check-circle"></i>
               </button>
-              <button>
+              <button onClick={() => removeTarefa(tarefa.id)}>
                 <i class="bx bx-trash"></i>
               </button>
             </Flex>
