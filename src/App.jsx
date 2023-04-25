@@ -10,8 +10,7 @@ function App() {
       tarefa: "Estudar React",
       //status: false,
       checked: true,
-    },
-    {
+    },{
       id: 2,
       tarefa: "Estudar React",
       //status: false,
@@ -19,7 +18,23 @@ function App() {
     }
   ]);
 
-  console.log(tarefas);
+  const addTarefa = () => {
+    if(!tarefa) return alert("Digite uma tarefa!");
+    const novaTarefa = {
+      id: Math.random(),
+      tarefa: tarefa,
+      //status: false,
+      checked: false,
+    }
+
+    setTarefas([...tarefas, novaTarefa]);
+    setTarefa("");    
+  };
+
+  const removeTarefa = (id) => {
+    const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id);
+    setTarefas(tarefasFiltradas);
+  };
 
   return (
     <Container>
@@ -27,10 +42,14 @@ function App() {
         To Do List
       </h1>
       <Spacer/>
-      <Flex direction="row" justify="between">
-        <Input placeholder="Digite sua tarefa!" 
-          onChange={(e) => setTarefa(e.target.value)}/>
-        <Button>Adicionar</Button>
+      <Flex direction="row">
+        <Input
+          value={tarefa} 
+          placeholder="Digite sua tarefa!" 
+          onChange={
+            (e) => setTarefa(e.target.value)
+          }/>
+        <Button onClick={addTarefa}>Adicionar</Button>
       </Flex>
       <Spacer margin="16px"/>
       <ul>
