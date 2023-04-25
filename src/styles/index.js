@@ -94,7 +94,7 @@ export const Button = styled.button`
 export const Item = styled.li`
     padding: 12px 10px 12px 24px;
     width: 299px;
-    height: 50px;
+    min-height: 50px;
     background: ${(props) => (props.checked ? "#74B4EC" : "#FFFFFF")};
     mix-blend-mode: normal;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -103,7 +103,8 @@ export const Item = styled.li`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    flex-wrap: wrap;
+
     p{
         font-weight: 500;
         font-size: 16px;
