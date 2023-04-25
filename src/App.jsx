@@ -36,6 +36,20 @@ function App() {
     setTarefas(tarefasFiltradas);
   };
 
+  const checkTarefa = (id) => {
+    const tarefasMapeadas = tarefas.map((tarefa) => {
+      if(tarefa.id === id) {
+        return {
+          ...tarefa,
+          checked: !tarefa.checked,
+        }
+      }
+      return tarefa;
+    });
+    setTarefas(tarefasMapeadas);
+  };
+  
+
   return (
     <Container>
       <h1 className="title">
