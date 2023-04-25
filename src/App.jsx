@@ -1,6 +1,7 @@
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
 /* Usar LocalStorage */
 import { useState } from "react";
+import imgagemEscolhida from './assets/Capturar.jpg';
 
 function App() {
   const [tarefa,setTarefa] = useState("");
@@ -52,6 +53,14 @@ function App() {
 
   return (
     <Container>
+      <img src={imgagemEscolhida} alt="imagem" style={
+        {
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          margin: "6px",
+        }
+      }/>
       <h1 className="title">
         To Do List
       </h1>
