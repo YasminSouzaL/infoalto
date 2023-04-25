@@ -48,7 +48,7 @@ function App() {
     });
     setTarefas(tarefasMapeadas);
   };
-  
+
 
   return (
     <Container>
@@ -74,7 +74,7 @@ function App() {
               {tarefa.tarefa}
             </p>
             <Flex direction="row">
-              <button>
+              <button onClick={() => checkTarefa(tarefa.id)}>
                 <i class="bx bx-check-circle"></i>
               </button>
               <button onClick={() => removeTarefa(tarefa.id)}>
