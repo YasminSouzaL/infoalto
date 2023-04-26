@@ -27,7 +27,20 @@ function App() {
     setTarefas(tarefas.filter((_, i) => i !== index));
   }
 
-  const checkTarefa = (index) => {
+  function editTarefa(index) {
+    const tarefasMapeadas = tarefas.map((tarefa, i) => {
+      if (index === i) {
+        return {
+          ...tarefa,
+          tarefa: tarefa,
+        }
+      }
+      return tarefa;
+    });
+    setTarefas(tarefasMapeadas);
+  }
+
+  function checkTarefa(index) {
     const tarefasMapeadas = tarefas.map((tarefa, i) => {
       if (index === i) {
         return {
@@ -38,7 +51,7 @@ function App() {
       return tarefa;
     });
     setTarefas(tarefasMapeadas);
-  };
+  }
 
   return (
     <Container>
@@ -66,6 +79,9 @@ function App() {
               </button>
               <button onClick={() => handleDelete(index)}>
                 <i class="bx bx-trash"></i>
+              </button>
+              <button onClick={() => editTarefa(index)}>
+                <i class="bx bx-pencil"></i>
               </button>
             </Flex>  
           </Item>
