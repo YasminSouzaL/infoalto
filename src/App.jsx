@@ -1,90 +1,78 @@
+/* criar um to do list com localstorage */
+import React, { useState, useEffect } from 'react';
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
-/* Usar LocalStorage */
-import { useState } from "react";
-import imgagemEscolhida from './assets/Capturar.jpg';
+
 
 function App() {
-  const [tarefa,setTarefa] = useState("");
-  const [tarefas,setTarefas] = useState([]);
+  const [tarefa, setTarefa] = useState('');
+  const [tarefas, setTarefas] = useState([]);
 
-  const addTarefa = () => {
-    if(!tarefa) return alert("Digite uma tarefa!");
-    const novaTarefa = {
-      id: Math.random(),
-      tarefa: tarefa,
-      //status: false,
-      checked: false,
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('tarefas');
+    if (tarefasStorage) {
+      setTarefas(JSON.parse(tarefasStorage));
     }
+  }
+    , []);
 
-    setTarefas([...tarefas, novaTarefa]);
-    setTarefa("");    
-  };
+  useEffect(() => {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
+    , [tarefas]);
 
-  const removeTarefa = (id) => {
-    const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id);
-    setTarefas(tarefasFiltradas);
-  };
+  function handleAdd() {
+    setTarefas([...tarefas, tarefa]);
+    setTarefa('');
+  }
 
-  const checkTarefa = (id) => {
-    const tarefasMapeadas = tarefas.map((tarefa) => {
-      if(tarefa.id === id) {
+  function handleDelete(index) {
+    setTarefas(tarefas.filter((t, i) => i !== index));
+  }
+
+  function checkTarefa(index) {
+    setTarefas(tarefas.map((t, i) => {
+      if (i === index) {
         return {
-          ...tarefa,
-          checked: !tarefa.checked,
+          ...t,
+          checked: !t.checked,
         }
       }
-      return tarefa;
-    });
-    setTarefas(tarefasMapeadas);
-  };
+      return t;
+    }));
+  }
+
 
 
   return (
     <Container>
-      <img src={imgagemEscolhida} alt="imagem" style={
-        {
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          margin: "6px",
-        }
-      }/>
       <h1 className="title">
         To Do List
       </h1>
-      <Spacer/>
+      <Spacer />
       <Flex direction="row">
-        <Input
-          value={tarefa} 
-          placeholder="Digite sua tarefa!" 
-          onChange={
-            (e) => setTarefa(e.target.value)
-          }/>
-        <Button onClick={addTarefa}>Adicionar</Button>
+        <Input 
+          type='text'
+          placeholder='Digite sua tarefa'
+          value={tarefa}
+          onChange={(e) => setTarefa(e.target.value)}
+        />
+        <Button onClick={handleAdd}>Adicionar</Button>
       </Flex>
-      <Spacer margin="16px"/>
-      <ul>
-        {tarefas.map((tarefa) => (
-          <>
-          <Item checked={tarefa.checked} key={tarefa.id}>
-            <p>
-              {tarefa.tarefa}
-            </p>
-            <Flex direction="row">
-              <button onClick={() => checkTarefa(tarefa.id)}>
-                <i class="bx bx-check-circle"></i>
-              </button>
-              <button onClick={() => removeTarefa(tarefa.id)}>
-                <i class="bx bx-trash"></i>
-              </button>
-            </Flex>
+      <Spacer />
+      <Flex direction="column">
+        {tarefas.map((tarefa, index) => (
+          <Item key={tarefa}>
+            {tarefa}
+            <Button onClick={() => checkTarefa(index)}>
+              <i class="bx bx-check-circle"></i>
+            </Button>
+            <Button onClick={() => handleDelete(index)}>
+              <i class="bx bx-trash"></i>
+            </Button>
           </Item>
-          <Spacer margin="16px"/>
-          </>          
         ))}
-      </ul>
+      </Flex>
     </Container>
   );
 }
-
-export default App
+export default App;
