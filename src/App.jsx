@@ -1,8 +1,7 @@
 /* criar um to do list com localstorage */
 import React, { useState, useEffect } from 'react';
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
-import imgagemEscolhida from './assets/Capturar.jpg';
-/* Na pasta assests tem uma imagem */
+
 function App() {
   const [tarefa, setTarefa] = useState('');
   const [tarefas, setTarefas] = useState([]);
@@ -48,14 +47,6 @@ function App() {
 
   return (
     <Container>
-      <img src={imgagemEscolhida} alt="imagem" style={
-        {
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          margin: "6px",
-        }
-      }/>
       <h1 className="title">
         To Do List
       </h1>
