@@ -1,7 +1,7 @@
 /* criar um to do list com localstorage */
 import React, { useState, useEffect } from 'react';
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
-
+import imgagemEscolhida from './assets/Capturar.jpg';
 
 function App() {
   const [tarefa, setTarefa] = useState('');
@@ -30,25 +30,34 @@ function App() {
   }
 
   function checkTarefa(index) {
-    setTarefas(tarefas.map((t, i) => {
-      if (i === index) {
+    const tarefasMapeadas = tarefas.map((tarefa, i) => {
+      if (index === i) {
         return {
-          ...t,
-          checked: !t.checked,
+          ...tarefa,
+          checked: !tarefa.checked,
         }
       }
-      return t;
-    }));
+      return tarefa;
+    });
+    setTarefas(tarefasMapeadas);
   }
 
 
 
   return (
     <Container>
+      <img src={imgagemEscolhida} alt="imagem" style={
+        {
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          margin: "6px",
+        }
+      }/>
       <h1 className="title">
         To Do List
       </h1>
-      <Spacer />
+      <Spacer  margin="16px"/>
       <Flex direction="row">
         <Input 
           type='text'
@@ -61,14 +70,18 @@ function App() {
       <Spacer />
       <Flex direction="column">
         {tarefas.map((tarefa, index) => (
-          <Item key={tarefa}>
-            {tarefa}
-            <Button onClick={() => checkTarefa(index)}>
-              <i class="bx bx-check-circle"></i>
-            </Button>
-            <Button onClick={() => handleDelete(index)}>
-              <i class="bx bx-trash"></i>
-            </Button>
+          <Item checked={tarefa.checked} key={tarefa.id}>
+            <p>
+              {tarefa}
+            </p>
+            <Flex direction="row">
+              <button onClick={() => checkTarefa(index)}>
+                <i class="bx bx-check-circle"></i>
+              </button>
+              <button onClick={() => handleDelete(index)}>
+                <i class="bx bx-trash"></i>
+              </button>
+            </Flex>  
           </Item>
         ))}
       </Flex>
