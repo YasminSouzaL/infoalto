@@ -6,18 +6,14 @@ function App() {
   const [tarefa, setTarefa] = useState('');
   const [tarefas, setTarefas] = useState([]);
 
-  useEffect(() => {
+  useEffect (() => {
     const tarefasStorage = localStorage.getItem('tarefas');
-    if (tarefasStorage) {
+    if (tarefasStorage){
       setTarefas(JSON.parse(tarefasStorage));
     }
+    localStorage.setItem('tarefas',JSON.stringify(tarefas));
   }
-    , []);
-
-  useEffect(() => {
-    localStorage.setItem('tarefas', JSON.stringify(tarefas));
-  }
-    , [tarefas]);
+  ,[tarefas]);  
 
   function handleAdd() {
     setTarefas([...tarefas, tarefa]);
