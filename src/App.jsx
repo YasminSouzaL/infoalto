@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
 import imgagemEscolhida from './assets/Capturar.jpg';
-
+/* Na pasta assests tem uma imagem */
 function App() {
   const [tarefa, setTarefa] = useState('');
   const [tarefas, setTarefas] = useState([]);
@@ -25,8 +25,10 @@ function App() {
     setTarefa('');
   }
 
+  
+
   function handleDelete(index) {
-    setTarefas(tarefas.filter((t, i) => i !== index));
+    setTarefas(tarefas.filter((_, i) => i !== index));
   }
 
   function checkTarefa(index) {
