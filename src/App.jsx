@@ -70,10 +70,8 @@ function App() {
       <Spacer />
       <Flex direction="column">
         {tarefas.map((tarefa, index) => (
-          <Item checked={tarefa.checked} key={tarefa.id}>
-            <p>
-              {tarefa}
-            </p>
+          <Item key={tarefa}>
+            {tarefa}
             <Flex direction="row">
               <button onClick={() => checkTarefa(index)}>
                 <i class="bx bx-check-circle"></i>
