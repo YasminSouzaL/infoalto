@@ -6,14 +6,17 @@ function App() {
   const [tarefa, setTarefa] = useState('');
   const [tarefas, setTarefas] = useState([]);
 
-  useEffect (() => {
-    const tarefasStorage = localStorage.getItem('tarefas');
-    if (tarefasStorage){
-      setTarefas(JSON.parse(tarefasStorage));
+  useEffect(() => {
+    const tarefas = localStorage.getItem('tarefas');
+    if (tarefas) {
+      setTarefas(JSON.parse(tarefas));
     }
-    localStorage.setItem('tarefas',JSON.stringify(tarefas));
-  }
-  ,[]);  
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }, [tarefas]);
+
 
   function handleAdd() {
     setTarefas([...tarefas, tarefa]);
@@ -24,7 +27,7 @@ function App() {
     setTarefas(tarefas.filter((_, i) => i !== index));
   }
 
-  function checkTarefa(index) {
+  const checkTarefa = (index) => {
     const tarefasMapeadas = tarefas.map((tarefa, i) => {
       if (index === i) {
         return {
@@ -35,7 +38,7 @@ function App() {
       return tarefa;
     });
     setTarefas(tarefasMapeadas);
-  }
+  };
 
   return (
     <Container>
@@ -54,7 +57,7 @@ function App() {
       </Flex>
       <Spacer />
       <Flex direction="column">
-        {tarefas.map((tarefa, index) => (
+        {tarefas.map((tarefa,index) => (
           <Item key={tarefa}>
             {tarefa}
             <Flex direction="row">
