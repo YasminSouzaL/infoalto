@@ -103,7 +103,7 @@ function App() {
       })
     );
   }
-  /*CheckTarefa => set receber e */
+  
   return (
     <Container>
       <h1 className="title">To Do List</h1>
