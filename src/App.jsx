@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
-import img from "./assets/Capturar.jpg";
+import img from "./assets/Capturar-removebg-preview.png";
 
 function App() {
   const [tarefa, setTarefa] = useState("");
@@ -104,25 +104,39 @@ function App() {
       })
     );
   }
-  
-  return (
-    <Container>
-      <h1 className="title" 
-      style={{ 
+  /*style={{ 
         alignItems: "center", 
         justifyItems: "center", 
-        marginRight:"16%"
-      }}>
-          To Do List
-          <img src={img} style={{
+        marginRight:"16%",
+        marginBottom: "5%"
+        ////
+        style={{
             width: "100px",
             height: "100px",
             borderRadius: "60%",
             marginRight: "30%",
             marginLeft: "5%",
             marginTop: "25%",
-          }}/>
-      </h1>
+          }}
+      }}*/
+  return (
+    <Container>
+      <img src={img} alt="logo" style={
+        {
+          width: "15%",
+          height: "50%",
+          borderRadius: "60%",
+          marginRight: "30%",
+          marginLeft: "5%",
+          marginBottom: "5%"
+        }
+      }
+      />
+      <Flex>
+        <h1 className="title"> 
+          To Do List
+        </h1>
+      </Flex>
       <Spacer margin="16px" />
       <Flex direction="row">
         <Input
