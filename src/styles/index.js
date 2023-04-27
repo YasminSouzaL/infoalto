@@ -131,4 +131,10 @@ export const Item = styled.li`
         color: ${(props) => (props.checked ? "#ffffff" : "#000000")};
     }
 
+    .marcada {
+        color: #74B4EC;
+        text-decoration: line-through;
+    }
+      
+
 `;
