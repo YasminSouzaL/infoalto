@@ -118,8 +118,9 @@ function App() {
             width: "100px",
             height: "100px",
             borderRadius: "60%",
-            marginRight: "16%",
-            marginLeft: "9%",
+            marginRight: "30%",
+            marginLeft: "5%",
+            marginTop: "25%",
           }}/>
       </h1>
       <Spacer margin="16px" />
@@ -146,7 +147,6 @@ function App() {
           onChange={(e) => setHora(e.target.value)}
         ></Input>
       </Flex>
-
       <Spacer />
       {/* Criar uma caixa para armazenar as tabelas */}
       <Flex style={{
