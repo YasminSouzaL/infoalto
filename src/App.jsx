@@ -1,6 +1,7 @@
 /* criar um to do list com localstorage */
 import React, { useState, useEffect } from 'react';
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
+import imgagemEscolhida from './assets/Capturar.jpg';
 
 function App() {
   const [tarefa, setTarefa] = useState('');
@@ -45,19 +46,39 @@ function App() {
       if (index === i) {
         return {
           ...tarefa,
-          checked: !tarefa.checked,
+          concluida: !tarefa.concluida,
         }
       }
       return tarefa;
     });
     setTarefas(tarefasMapeadas);
   }
+  
+
+  function relogio(){
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setTime(new Date().toLocaleTimeString());
+      }, 1000);
+      return () => clearInterval(timer);
+    }, []);
+    return time;
+  }
 
   return (
     <Container>
+      <img src={imgagemEscolhida} alt="imagem" style={
+        {
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+        }
+      }/>
       <h1 className="title">
         To Do List
       </h1>
+      {/* Criar um relogio */}
       <Spacer  margin="16px"/>
       <Flex direction="row">
         <Input 
@@ -70,22 +91,22 @@ function App() {
       </Flex>
       <Spacer />
       <Flex direction="column">
-        {tarefas.map((tarefa,index) => (
-          <Item key={tarefa}>
-            {tarefa}
+      {tarefas.map((tarefa,index) => (
+        <Item key={index}>
+          {tarefa}
             <Flex direction="row">
               <button onClick={() => checkTarefa(index)}>
-                <i class="bx bx-check-circle"></i>
+                <i className="bx bx-check-circle"></i>
               </button>
               <button onClick={() => handleDelete(index)}>
-                <i class="bx bx-trash"></i>
+                <i className="bx bx-trash"></i>
               </button>
               <button onClick={() => editTarefa(index)}>
-                <i class="bx bx-pencil"></i>
+                <i className="bx bx-pencil"></i>
               </button>
             </Flex>  
-          </Item>
-        ))}
+        </Item>
+      ))}
       </Flex>
     </Container>
   );
