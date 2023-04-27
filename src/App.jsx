@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Input, Button, Flex, Spacer, Item } from "./styles";
+import img from "./assets/Capturar.jpg";
 
 function App() {
   const [tarefa, setTarefa] = useState("");
@@ -106,7 +107,21 @@ function App() {
   
   return (
     <Container>
-      <h1 className="title">To Do List</h1>
+      <h1 className="title" 
+      style={{ 
+        alignItems: "center", 
+        justifyItems: "center", 
+        marginRight:"16%"
+      }}>
+          To Do List
+          <img src={img} style={{
+            width: "100px",
+            height: "100px",
+            borderRadius: "60%",
+            marginRight: "16%",
+            marginLeft: "9%",
+          }}/>
+      </h1>
       <Spacer margin="16px" />
       <Flex direction="row">
         <Input
@@ -120,35 +135,58 @@ function App() {
       <Flex direction="row" style={{ marginTop: "16px" }}>
         <Input
           type="time"
+          style={{
+            width: "150px",
+            height: "50px",
+            borderRadius: "8px",
+            border: "none",
+            marginRight: "13%",
+          }}
           value={hora}
           onChange={(e) => setHora(e.target.value)}
         ></Input>
       </Flex>
 
       <Spacer />
-      <Flex direction="column">
-        {tarefas.map((tarefa, index) => (
-          <Item key={index} checked={tarefa.marcada}>
-            <p>
-              {tarefa.tarefa} - {tarefa.currentHour}
-            </p>
-            <Flex direction="row">
-              <button onClick={() => checkTarefa(tarefa)}>
-                <i className="bx bx-check-circle"></i>
-              </button>
-              <button onClick={() => handleDelete(tarefa)}>
-                <i className="bx bx-trash"></i>
-              </button>
-              <button
-                onClick={() => {
-                  editTarefa(tarefa);
-                }}
-              >
-                <i className="bx bx-pencil"></i>
-              </button>
-            </Flex>
-          </Item>
-        ))}
+      {/* Criar uma caixa para armazenar as tabelas */}
+      <Flex style={{
+        borderRadius: "5px",
+        marginRight: "10%",
+        borderStyle: "solid",
+        borderWidth: "3px",
+      }}>
+        <h2>Tarefas</h2>
+        {/*Contador de tarefas */}
+        <p>
+          {tarefas.filter((tarefa) => tarefa.marcada === false).length} tarefas
+          restantes
+        </p>
+        <Spacer />
+        <Flex direction="column">
+          {tarefas.map((tarefa, index) => (
+            <Item key={index} checked={tarefa.marcada}>
+              <p>
+                {tarefa.tarefa} - {tarefa.currentHour}
+              </p>
+              <Flex direction="row">
+                <button onClick={() => checkTarefa(tarefa)}>
+                  <i className="bx bx-check-circle"></i>
+                </button>
+                <button onClick={() => handleDelete(tarefa)}>
+                  <i className="bx bx-trash"></i>
+                </button>
+                <button
+                  onClick={() => {
+                    editTarefa(tarefa);
+                  }}
+                >
+                  <i className="bx bx-pencil"></i>
+                </button>
+              </Flex>
+            </Item>
+          ))}
+        </Flex>
+        <Spacer />
       </Flex>
     </Container>
   );
