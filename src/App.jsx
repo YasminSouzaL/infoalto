@@ -104,36 +104,19 @@ function App() {
       })
     );
   }
-  /*style={{ 
-        alignItems: "center", 
-        justifyItems: "center", 
-        marginRight:"16%",
-        marginBottom: "5%"
-        ////
-        style={{
-            width: "100px",
-            height: "100px",
-            borderRadius: "60%",
-            marginRight: "30%",
-            marginLeft: "5%",
-            marginTop: "25%",
-          }}
-      }}*/
   return (
     <Container>
-      <img src={img} alt="logo" style={
-        {
-          width: "15%",
-          height: "50%",
-          borderRadius: "60%",
-          marginRight: "30%",
-          marginLeft: "5%",
-          marginBottom: "5%"
-        }
-      }
-      />
       <Flex>
-        <h1 className="title"> 
+        <h1 className="title"
+          style={{
+            color: "#74B4EC",
+            fontSize: "100px",
+            fontFamily: "Arial",
+            marginLeft: "5%",
+            marginTop: "5%",
+            fontWeight: "bold",
+          }}
+        > 
           To Do List
         </h1>
       </Flex>
@@ -162,7 +145,6 @@ function App() {
         ></Input>
       </Flex>
       <Spacer />
-      {/* Criar uma caixa para armazenar as tabelas */}
       <Flex style={{
         borderRadius: "5px",
         marginRight: "10%",
@@ -170,7 +152,6 @@ function App() {
         borderWidth: "3px",
       }}>
         <h2>Tarefas</h2>
-        {/*Contador de tarefas */}
         <p>
           {tarefas.filter((tarefa) => tarefa.marcada === false).length} tarefas
           restantes
