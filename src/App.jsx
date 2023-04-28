@@ -106,6 +106,16 @@ function App() {
   }
   return (
     <Container>
+      <img src={img} alt="logo" 
+      style={{
+          width: "15%",
+          height: "50%",
+          borderRadius: "60%",
+          marginRight: "30%",
+          marginLeft: "5%",
+          marginBottom: "-10%"
+        }}
+      />
       <Flex>
         <h1 className="title"
           style={{
