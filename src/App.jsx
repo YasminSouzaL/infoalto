@@ -113,7 +113,7 @@ function App() {
           borderRadius: "60%",
           marginRight: "30%",
           marginLeft: "5%",
-          marginBottom: "-10%"
+          marginBottom: "-12%"
         }}
       />
       <Flex>
@@ -152,7 +152,8 @@ function App() {
           }}
           value={hora}
           onChange={(e) => setHora(e.target.value)}
-        ></Input>
+        >
+        </Input>
       </Flex>
       <Spacer />
       <Flex style={{
